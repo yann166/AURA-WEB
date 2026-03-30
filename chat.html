@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussions | Aura Immo</title>
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="exemple.css">
+    <style>
+        .chat-layout {
+            display: flex;
+            height: calc(100vh - 80px);
+            margin-top: 80px;
+            background: var(--clr-bg);
+        }
+
+        .chat-sidebar {
+            width: 320px;
+            background: var(--clr-surface);
+            border-right: 1px solid var(--clr-border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .chat-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .chat-item {
+            padding: 20px 24px;
+            display: flex;
+            gap: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .chat-item:hover, .chat-item.active {
+            background: rgba(var(--clr-primary-rgb), 0.05);
+        }
+
+        .chat-item.active {
+            border-left: 4px solid var(--clr-primary);
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--clr-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .chat-info h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .chat-info p {
+            font-size: 0.85rem;
+            color: var(--clr-text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chat-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--clr-bg);
+        }
+
+        .chat-header {
+            padding: 15px 30px;
+            background: var(--clr-surface);
+            border-bottom: 1px solid var(--clr-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .messages-container {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 14px 18px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .message.received {
+            align-self: flex-start;
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.sent {
+            align-self: flex-end;
+            background: var(--clr-primary);
+            color: #000;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-input-area {
+            padding: 20px 30px;
+            background: var(--clr-surface);
+            border-top: 1px solid var(--clr-border);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: var(--clr-bg);
+            border: 1px solid var(--clr-border);
+            color: var(--clr-text);
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-family: inherit;
+        }
+
+        .send-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--clr-primary);
+            border: none;
+            color: #000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon"><i class="ri-pulse-line"></i></span>
+                Aura Immo
+            </a>
+            
+            <div class="nav-actions">
+                <a href="index.html" class="nav-btn-icon" title="Retour à l'accueil">
+                    <i class="ri-home-4-line"></i>
+                </a>
+                <button id="theme-toggle" class="theme-toggle-btn">
+                    <i class="ri-sun-line"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="chat-layout">
+        <!-- Sidebar -->
+        <aside class="chat-sidebar">
+            <div class="sidebar-header">
+                <h3>Messages</h3>
+            </div>
+            <div class="chat-list">
+                <div class="chat-item active">
+                    <div class="avatar">CH</div>
+                    <div class="chat-info">
+                        <h4>CHARLE (Agent)</h4>
+                        <p>En ligne</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat -->
+        <main class="chat-main">
+            <div class="chat-header">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div class="avatar" style="width: 40px; height: 40px;">CH</div>
+                    <div>
+                        <h4 id="agent-name">CHARLE</h4>
+                        <span style="font-size: 0.8rem; color: #4ade80;">● En ligne</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="nav-btn-icon"><i class="ri-phone-line"></i></button>
+                    <button class="nav-btn-icon"><i class="ri-more-2-fill"></i></button>
+                </div>
+            </div>
+
+            <div class="messages-container" id="messages">
+                <div class="message received">
+                    Bonjour ! Je suis CHARLE, votre agent dédié. Comment puis-je vous aider aujourd'hui ?
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <button class="nav-btn-icon"><i class="ri-attachment-line"></i></button>
+                <input type="text" class="chat-input" placeholder="Écrivez votre message..." id="msg-input">
+                <button class="send-btn" id="send-btn"><i class="ri-send-plane-2-line"></i></button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const msgInput = document.getElementById('msg-input');
+        const sendBtn = document.getElementById('send-btn');
+        const messagesContainer = document.getElementById('messages');
+
+        function sendMessage() {
+            const text = msgInput.value.trim();
+            if(!text) return;
+
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message sent';
+            msgDiv.textContent = text;
+            messagesContainer.appendChild(msgDiv);
+            
+            msgInput.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Simple auto-reply simulation
+            setTimeout(() => {
+                const replyDiv = document.createElement('div');
+                replyDiv.className = 'message received';
+                replyDiv.textContent = "Merci pour votre confiance, un agent vous contactera pour plus de détails.";
+                messagesContainer.appendChild(replyDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 1000);
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        msgInput.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') sendMessage();
+        });
+
+        // Theme management (simple sync with index)
+        const savedTheme = localStorage.getItem('aura-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeBtn.querySelector('i');
+        if (savedTheme === 'light') themeIcon.className = 'ri-moon-line';
+
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('aura-theme', newTheme);
+            themeIcon.className = newTheme === 'dark' ? 'ri-sun-line' : 'ri-moon-line';
+        });
+
+        // Get Property info from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const propTitle = urlParams.get('prop');
+        if (propTitle) {
+            const introMsg = document.createElement('div');
+            introMsg.className = 'message sent';
+            introMsg.textContent = `Je suis intéressé par la propriété : ${propTitle}`;
+            messagesContainer.appendChild(introMsg);
+        }
+    </script>
+</body>
+</html>

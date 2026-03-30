@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login create by yann</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/9e60d7916b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section>
+      <div class="input-box">
+        <h2>CONNEXION</h2>
+        <input type="text" id="username" placeholder="Username" />
+        <i class="fa-solid fa-user"></i>
+      </div>
+      <div class="input-box">
+        <input type="password" id="password" placeholder="Password" />
+      </div>
+      <div class="rappel">
+        <label
+          ><input type="checkbox" /> Se souvenir de son mot de passe
+        </label>
+        <br />
+        <a href="#"> Mot de passe oublié ?</a>
+      </div>
+      <button class="connecter" id="loginBtn">Se connecter</button>
+      <br />
+      <br />
+
+      <div class="inscription">
+        <p>
+          Vous n'avez pas de compte ? <a href="s'inscrire.html">S'inscrire</a>
+        </p>
+      </div>
+    </section>
+    <script src="login.js"></script>
+    <script>
+      document.getElementById('loginBtn').addEventListener('click', async () => {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const success = await login(username, password);
+        if (success) {
+          window.location.href = 'TERMINÉ.html';
+        }
+      });
+    </script>
+  </body>
+</html>

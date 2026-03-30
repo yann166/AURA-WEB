@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>terminé</title>
+    <link rel="stylesheet" href="terminé.css">
+</head>
+<body>
+     <!-- ÉTAPE 2 : LOADING  -->
+  <div id="loading-screen">
+    <div class="house-loader">
+      <div class="house-icon">🏠</div>
+      <p class="loading-text">Chargement...</p>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 3 : VIDÉO PLEIN ÉCRAN -->
+  <div id="video-screen">
+    <!-- 🔧 CHANGE UNIQUEMENT CE LIEN ICI -->
+    <video id="ma-video" src="yann.mp4" playsinline></video>
+  </div>
+
+  <!-- ÉTAPE 4 : PAGE PRINCIPALE -->
+  <!-- <div id="page-principale">
+    <h1>🏠 Bienvenue sur le site !</h1>
+  </div> -->
+
+  <script>
+    function seConnecter() {
+      // Ton système d'auth gère la vérification
+      const loginBox = document.getElementById('login-box');
+      if (loginBox) loginBox.style.display = 'none';
+
+      document.getElementById('loading-screen').style.display = 'flex';
+
+      setTimeout(() => {
+        document.getElementById('loading-screen').style.display = 'none';
+        lancerVideo();
+      }, 8000);
+    }
+
+    function lancerVideo() {
+      const videoScreen = document.getElementById('video-screen');
+      const video = document.getElementById('ma-video');
+
+      videoScreen.style.display = 'block';
+      video.play();
+
+      // Rediriger au clic n'importe où sur l'écran de la vidéo
+      videoScreen.addEventListener('click', allerPagePrincipale);
+      
+      video.addEventListener('ended', allerPagePrincipale);
+    }
+
+    function allerPagePrincipale() {
+      window.location.href = 'index.html';
+    }
+
+    // Lance le loading au chargement de la page
+    window.addEventListener('load', seConnecter);
+  </script>
+
+    
+</body>
+</html>

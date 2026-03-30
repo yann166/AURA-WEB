@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creer un compte</title>
+</head>
+<body>
+    <main class="create">
+        <aside class="image">
+
+        </aside>
+        <form class="create-form">
+            <div class="form-row">
+                <div class="input-box">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+                <div class="input-box">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                </div>
+            </div>
+            <div class="input-box">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-box">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-row">
+                <div class="input-box">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" min="0" required>
+                </div>
+                <div class="input-box">
+                    <label for="genre">Genre</label>
+                    <select id="genre" name="genre" required>
+                        <option value="">Sélectionnez votre genre</option>
+                        <option value="homme">Homme</option>
+                        <option value="femme">Femme</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit">Créer un compte</button>
+        </form>
+    </main>
+</body>
+</html>

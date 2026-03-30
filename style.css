@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("maison.png");
+  background-position: center;
+  background-size: cover;
+}
+section {
+  background-color: rgba(26, 68, 146, 0.253);
+  padding: 24px;
+  width: min(90vw, 650px);
+  border-radius: 10px;
+  backdrop-filter: blur(20px);
+  margin-top: -100px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.inscription-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 16px;
+}
+.inscription {
+  margin-bottom: 0;
+  position: relative;
+  width: 100%;
+}
+.inscription {
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: #faf6f6;
+  color: #000000;
+  cursor: pointer;
+  margin-top: 20px;
+}
+section h1 {
+  text-align: center;
+  margin-bottom: 22px;
+  font-size: 26px;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  text-decoration: underline;
+  color: #fffbfb;
+}
+.inscription input {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 20px;
+  border-bottom: 2px solid #100f0f;
+  outline: none;
+  background: transparent;
+  color: #faf6f6;
+}
+.inscription label {
+}
+.bouton {
+  transition: 0.5s;
+}
+.bouton:hover {
+  background-color: transparent;
+  color: white;
+}
+input {
+  display: block;
+  margin-top: 10px;
+  padding: 7px;
+  width: 100%;
+}
+.inscription select {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 20px;
+  border-bottom: 2px solid #100f0f;
+  outline: none;
+  background: transparent;
+  color: #faf6f6;
+  margin-top: 10px;
+}
+.return {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+}
+.return img {
+  width: 30px;
+}
+select option {
+  color: black;
+}
+.inscription input::placeholder {
+  color: #fffbfb;
+}
+
+@media (max-width: 720px) {
+  section {
+    width: min(90vw, 100%);
+    padding: 16px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .inscription-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

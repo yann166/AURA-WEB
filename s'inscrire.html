@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login create by yann</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/9e60d7916b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section>
+      <div class="inscription-header">
+        <a href="login.html" class="return">
+          <img src="icons/arrowleft.svg" alt="" />
+        </a>
+        <h1>INSCRIPTION</h1>
+      </div>
+      <div class="form-grid">
+        <div class="inscription">
+          <label> Nom </label>
+          <input type="text" placeholder="Name" />
+        </div>
+        <div class="inscription">
+          <label> Prénom </label>
+          <input type="text" placeholder="Surname" />
+        </div>
+      <div class="inscription">
+        <label for="age"> Âge </label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          min="0"
+          required
+          placeholder="Old"
+        />
+      </div>
+      <div class="inscription">
+        <label>Genre</label>
+        <select id="genre" name="genre" required>
+                        <em><option value="">Sélectionnez votre genre</option></em>
+                        <em><option value="homme">Homme</option></em>
+                        <em><option value="femme">Femme</option></em>
+                    </select>
+      </div>
+      <div class="inscription">
+        <label>Mot de Passe</label>
+        <input
+          type="password"
+          id="regPassword"
+          placeholder="enter a password"
+          minlength="8"
+          pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}"
+          title="Au moins 8 caractères, contenant des lettres, chiffres et symboles"
+          required
+        />
+        <small style="font-size: 10px;">8+ caractères ; lettres + chiffres + symboles.</small>
+      </div>
+      
+      <div class="inscription">
+        <label>Nom d'Utilisateur</label>
+        <input type="text" id="regUsername" placeholder="Enter a username" />
+      </div>
+      </div>
+
+      <button class="bouton" id="registerBtn">S'inscrire</button>
+    </section>
+    <script src="login.js"></script>
+    <script>
+      document.getElementById('registerBtn').addEventListener('click', async (event) => {
+        event.preventDefault();
+        const username = document.getElementById('regUsername').value;
+        const password = document.getElementById('regPassword').value;
+        if (username && password) {
+          const success = await register(username, password);
+          if (success) {
+            window.location.href = 'TERMINÉ.html';
+          }
+        } else {
+          alert('Please fill in username and password.');
+        }
+      });
+    </script>
+  </body>
+</html>

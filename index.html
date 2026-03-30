@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Immobilier | Maisons de Prestige</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="exemple.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="ri-home-smile-line"></i> AURA<span>.</span>
+            </a>
+            <div class="nav-links">
+                <a href="#accueil" class="active">Accueil</a>
+                <a href="#proprietes">Propriétés</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="nav-actions" id="nav-auth-container">
+                <a href="chat.html" class="nav-btn-icon" title="Discussions">
+                    <i class="ri-chat-3-line"></i>
+                </a>
+                <button id="theme-toggle" class="theme-toggle" title="Changer le thème">
+                    <i class="ri-moon-line"></i>
+                </button>
+                <a href="login.html" class="btn btn-outline" id="login-trigger-link"><i class="ri-user-line"></i> Connexion</a>
+                <div id="user-profile-nav" style="display: none;" class="user-profile-nav">
+                    <span id="user-name-nav"></span>
+                    <button id="logout-btn" title="Déconnexion"><i class="ri-logout-box-r-line"></i></button>
+                </div>
+                <div class="menu-toggle" id="mobile-menu-btn"><i class="ri-menu-4-line"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title fade-up">Découvrez l'Excellence <br><span>Immobilière</span></h1>
+            <p class="hero-subtitle fade-up delay-1">Des résidences de prestige conçues pour l'élégance et votre style de vie unique.</p>
+            
+            <div class="search-bar glassmorphism fade-up delay-2">
+                <div class="search-input">
+                    <label>Localisation</label>
+                    <input type="text" id="search-location" placeholder="Bonanjo, Bali...">
+                </div>
+                <div class="search-divider"></div>
+                <div class="search-input">
+                    <label>Type de bien</label>
+                    <select id="search-type">
+                        <option value="all">Tous les types</option>
+                        <option value="villa">Villa de luxe</option>
+                        <option value="apartment">Appartement</option>
+                        <option value="penthouse">Penthouse</option>
+                    </select>
+                </div>
+                <div class="search-divider"></div>
+                <div class="search-input">
+                    <label>Prix max</label>
+                    <select id="search-price-max">
+                        <option value="any">Peu importe</option>
+                        <option value="25000000">25 000 000 FCFA</option>
+                        <option value="50000000">50 000 000 FCFA</option>
+                        <option value="125000000">125 000 000 FCFA +</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary search-btn" id="search-btn"><i class="ri-search-line"></i> Explorer</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats section-padding">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h2 class="stat-number">150+</h2>
+                <p class="stat-desc">Propriétés de luxe</p>
+            </div>
+            <div class="stat-item">
+                <h2 class="stat-number">24/7</h2>
+                <p class="stat-desc">Service Conciergerie</p>
+            </div>
+            <div class="stat-item">
+                <h2 class="stat-number">98%</h2>
+                <p class="stat-desc">Clients satisfaits</p>
+            </div>
+            <div class="stat-item">
+                <h2 class="stat-number">12</h2>
+                <p class="stat-desc">Prix d'excellence</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="properties section-padding" id="proprietes">
+        <div class="section-header">
+            <div>
+                <span class="section-subtitle">NOTRE SÉLECTION</span>
+                <h2 class="section-title">Propriétés en <span>Vedette</span></h2>
+            </div>
+            <div class="filter-tabs" id="property-filters">
+                <button class="filter-btn active" data-filter="all">Toutes</button>
+                <button class="filter-btn" data-filter="villa">Villas</button>
+                <button class="filter-btn" data-filter="apartment">Appartements</button>
+                <button class="filter-btn" data-filter="favorites" id="favorites-tab" style="display: none;"><i class="ri-heart-fill"></i> Favoris</button>
+            </div>
+        </div>
+
+        <div class="properties-grid" id="properties-grid">
+            <!-- Propriété 1 -->
+            <div class="property-card" onclick="openModal(1)" data-id="1" data-location="Bonanjo" data-type="villa" data-price="80500000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 1)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/47239_00-2025-06-04-0127.jpg" alt="Villa Lumina" class="card-img" loading="lazy">
+                    <div class="card-price">80 500 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Villa Lumina</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bonanjo </p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>5 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>6 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>850 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 1, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 2 -->
+            <div class="property-card" onclick="openModal(2)" data-id="2" data-location="Bonamoussadi" data-type="penthouse" data-price="40200000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 2)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Penthouse</span>
+                    <img src="maison/photo-1512918728675-ed5a9ecdebfd.avif" alt="Penthouse Étoile" class="card-img" loading="lazy">
+                    <div class="card-price">40 200 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Penthouse Étoile</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bonamoussadi </p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>3 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>3 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>280 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 2, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 3 -->
+            <div class="property-card" onclick="openModal(3)" data-id="3" data-location="Bonapriso" data-type="villa" data-price="60300000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 3)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/photo-1510798831971-661eb04b3739.avif" alt="Domaine des Arcs" class="card-img" loading="lazy">
+                    <div class="card-price">60 300 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Domaine des Arcs</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bonapriso</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>7 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>8 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>1200 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 3, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 4 -->
+            <div class="property-card" onclick="openModal(4)" data-id="4" data-location="Akwa" data-type="apartment" data-price="20850000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 4)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Appartement</span>
+                    <img src="maison/photo-1493809842364-78817add7ffb.avif" alt="Appartement Haussmannien" class="card-img" loading="lazy">
+                    <div class="card-price">20 850 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Appartement Haussmannien</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Akwa</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>2 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>2 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>165 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 4, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 5 -->
+            <div class="property-card" onclick="openModal(5)" data-id="5" data-location="Yassa" data-type="villa" data-price="100000000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 5)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/photo-1600596542815-ffad4c1539a9.avif" alt="Villa Horizon" class="card-img" loading="lazy">
+                    <div class="card-price">100 000 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Villa Horizon</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Yassa</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>6 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>7 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>1100 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 5, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 6 -->
+            <div class="property-card" onclick="openModal(6)" data-id="6" data-location="Bali" data-type="apartment" data-price="30100000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 6)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Appartement</span>
+                    <img src="maison/photo-1522708323590-d24dbb6b0267.avif" alt="Le Duplex Royal" class="card-img" loading="lazy">
+                    <div class="card-price">30 100 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Le Duplex Royal</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bali</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>4 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>3 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>220 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 6, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 7 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(7)" data-id="7" data-location="Bonanjo" data-type="villa" data-price="50400000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 7)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/images (6).jpeg" alt="Villa d'Azur" class="card-img" loading="lazy">
+                    <div class="card-price">50 400 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Villa d'Azur</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bonanjo</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>4 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>4 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>450 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 7, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 8 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(8)" data-id="8" data-location="Akwa" data-type="villa" data-price="70200000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 8)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/images (7).jpeg" alt="Manoir du Lac" class="card-img" loading="lazy">
+                    <div class="card-price">70 200 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Manoir du Lac</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i>Akwa</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>8 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>7 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>900 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 8, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 9 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(9)" data-id="9" data-location="Bonapriso" data-type="apartment" data-price="10950000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 9)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Appartement</span>
+                    <img src="maison/images (8).jpeg" alt="Appartement Belle-Vue" class="card-img" loading="lazy">
+                    <div class="card-price">10 950 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Appartement Belle-Vue</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bonapriso</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>3 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>2 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>140 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 9, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 10 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(10)" data-id="10" data-location="Yassa" data-type="villa" data-price="40800000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 10)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/images (9).jpeg" alt="Chalet des Cimes" class="card-img" loading="lazy">
+                    <div class="card-price">40 800 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Chalet des Cimes</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Yassa</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>5 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>5 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>380 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 10, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 11 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(11)" data-id="11" data-location="Bonamoussadi" data-type="villa" data-price="90000000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 11)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/images (10).jpeg" alt="Résidence de Mer" class="card-img" loading="lazy">
+                    <div class="card-price">90 000 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Résidence de Mer</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bonamoussadi</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>6 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>6 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>600 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 11, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 12 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(12)" data-id="12" data-location="Bali" data-type="villa" data-price="30500000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 12)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/OIP.webp" alt="Villa Cascade" class="card-img" loading="lazy">
+                    <div class="card-price">30 500 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Villa Cascade</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bali</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>5 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>4 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>320 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 12, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 13 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(13)" data-id="13" data-location="Bonanjo" data-type="villa" data-price="20200000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 13)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/OIP (1).webp" alt="Résidence des Pins" class="card-img" loading="lazy">
+                    <div class="card-price">20 200 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Résidence des Pins</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bonanjo</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>4 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>3 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>250 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 13, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 14 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(14)" data-id="14" data-location="Bonanjo" data-type="apartment" data-price="10100000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 14)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Appartement</span>
+                    <img src="maison/OIP (2).webp" alt="Appartement Lumière" class="card-img" loading="lazy">
+                    <div class="card-price">10 100 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Appartement Lumière</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i>Bonanjo</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>2 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>2 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>110 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 14, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 15 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(15)" data-id="15" data-location="Akwa" data-type="villa" data-price="60800000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 15)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/OIP (3).webp" alt="Villa Serena" class="card-img" loading="lazy">
+                    <div class="card-price">60 800 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Villa Serena</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Akwa</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>6 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>6 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>550 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 15, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 16 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(16)" data-id="16" data-location="Bonamoussadi" data-type="penthouse" data-price="20500000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 16)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Penthouse</span>
+                    <img src="maison/OIP (4).webp" alt="Penthouse Sky" class="card-img" loading="lazy">
+                    <div class="card-price">20 500 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Penthouse Sky</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bonamoussadi</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>3 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>2 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>190 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 16, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 17 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(17)" data-id="17" data-location="Yassa" data-type="villa" data-price="40900000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 17)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/OIP (5).webp" alt="Domaine du Verdon" class="card-img" loading="lazy">
+                    <div class="card-price">40 900 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Domaine du Verdon</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Yassa</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>7 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>5 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>600 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 17, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 18 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(18)" data-id="18" data-location="Bali" data-type="apartment" data-price="10450000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 18)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Appartement</span>
+                    <img src="maison/OIP (6).webp" alt="Loft Industriel" class="card-img" loading="lazy">
+                    <div class="card-price">10 450 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Loft Industriel</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bali</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>2 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>1 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>150 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 18, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 19 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(19)" data-id="19" data-location="Bali" data-type="villa" data-price="30200000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 19)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/OIP (7).webp" alt="Villa des Oliviers" class="card-img" loading="lazy">
+                    <div class="card-price">30 200 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Villa des Oliviers</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bali</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>5 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>4 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>300 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 19, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 20 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(20)" data-id="20" data-location="Bonamoussadi" data-type="villa" data-price="50750000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 20)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/OIP (8).webp" alt="Le Refuge Moderne" class="card-img" loading="lazy">
+                    <div class="card-price">50 750 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Le Refuge Moderne</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bonamoussadi</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>4 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>4 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>420 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 20, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+
+            <!-- Propriété 21 (Hidden) -->
+            <div class="property-card hidden-prop" onclick="openModal(21)" data-id="21" data-location="Bonanjo" data-type="villa" data-price="108000000">
+                <div class="card-img-wrapper">
+                    <button class="wishlist-btn" onclick="toggleFavorite(event, 21)" title="Ajouter aux favoris">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="card-badge">Villa</span>
+                    <img src="maison/télécharger.webp" alt="Villa d'Exception" class="card-img" loading="lazy">
+                    <div class="card-price">108 000 000 FCFA</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Villa d'Exception</h3>
+                    <p class="card-location"><i class="ri-map-pin-line"></i> Bonanjo</p>
+                    <div class="card-features">
+                        <div class="feature"><i class="ri-hotel-bed-line"></i><span>6 lits</span></div>
+                        <div class="feature"><i class="ri-showers-line"></i><span>7 sdb</span></div>
+                        <div class="feature"><i class="ri-layout-masonry-line"></i><span>950 m²</span></div>
+                    </div>
+                    <button class="card-contact-btn" onclick="contactAgentOnCard(event, 21, this)">
+                        <i class="ri-mail-send-line"></i> Contacter l'Agent
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="center-btn">
+            <button class="btn btn-outline" id="load-more">Voir plus de propriétés</button>
+            <button class="btn btn-outline" id="show-less" style="display: none;">Voir moins</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section-padding" id="services">
+        <div class="services-wrapper">
+            <div class="service-image-container">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1470&auto=format&fit=crop" alt="Intérieur de luxe" class="service-img">
+                <div class="experience-badge glassmorphism">
+                    <span class="badge-number">15</span>
+                    <span class="badge-text">Années<br>d'expérience</span>
+                </div>
+            </div>
+            <div class="services-content">
+                <span class="section-subtitle">POURQUOI NOUS CHOISIR</span>
+                <h2 class="section-title">Redéfinissez l'art de <span>vivre</span>.</h2>
+                <p class="services-desc">AURA Immobilier est le partenaire de vos ambitions. Nous sélectionnons méticuleusement chaque propriété pour vous offrir un cadre de vie exceptionnel.</p>
+                
+                <div class="service-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="ri-shield-check-line"></i></div>
+                        <div>
+                            <h4>Transaction Sécurisée</h4>
+                            <p>Un accompagnement juridique complet.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="ri-vip-diamond-line"></i></div>
+                        <div>
+                            <h4>Propriétés Exclusives</h4>
+                            <p>Accès à des biens hors marché.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="ri-customer-service-2-line"></i></div>
+                        <div>
+                            <h4>Conciergerie Dédiée</h4>
+                            <p>Assistance personnalisée 24/7.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo"><i class="ri-home-smile-line"></i> AURA<span>.</span></a>
+                <p>L'excellence immobilière à la française. Trouvez la résidence qui correspond à votre vision de la perfection.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com"><i class="ri-instagram-line"></i></a>
+                    <a href="https://www.linkedin.com"><i class="ri-linkedin-fill"></i></a>
+                    <a href="https://www.twitter.com"><i class="ri-twitter-x-line"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Liens Rapides</h4>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#proprietes">Nos Propriétés</a></li>
+                    <li><a href="#services">Nos Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><i class="ri-map-pin-line"></i> Face CCA, Akwa</p>
+                <p><i class="ri-phone-line"></i> +237 6 97 51 08 79</p>
+                <p><i class="ri-mail-line"></i> auraimmobilier@gmail.com</p>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Recevez nos propriétés exclusives.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Votre email...">
+                    <button><i class="ri-send-plane-fill"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AURA Immobilier. Tous droits réservés. </p>
+        </div>
+        <div class="bas">
+            <p style="display: flex; justify-content: center;"><em>By AURA COMPANY.</em></p>
+        </div>
+    </footer>
+
+    <!-- Property Modal -->
+    <div class="modal-overlay" id="property-modal">
+        <div class="modal-container">
+            <button class="modal-close" id="modal-close"><i class="ri-close-line"></i></button>
+            <div class="modal-content" id="modal-content">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="toast" class="toast">
+        <i class="ri-checkbox-circle-line"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

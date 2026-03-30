@@ -1,0 +1,25 @@
+ <div class="property-card" style="animation-delay: ${delay}s" onclick="openModal(${prop.id})">
+                    <div class="card-img-wrapper">
+                        <span class="card-badge">${badgeText}</span>
+                        <img src="${prop.image}" alt="${prop.title}" class="card-img" loading="lazy">
+                        <div class="card-price">${formatPrice(prop.price)}</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">${prop.title}</h3>
+                        <p class="card-location"><i class="ri-map-pin-line"></i> ${prop.location}</p>
+                        <div class="card-features">
+                            <div class="feature">
+                                <i class="ri-hotel-bed-line"></i>
+                                <span>${prop.beds} lits</span>
+                            </div>
+                            <div class="feature">
+                                <i class="ri-showers-line"></i>
+                                <span>${prop.baths} sdb</span>
+                            </div>
+                            <div class="feature">
+                                <i class="ri-layout-masonry-line"></i>
+                                <span>${prop.sqft} m²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
