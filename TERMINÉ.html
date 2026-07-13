@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="terminé.css">
 </head>
 <body>
-     
   <div id="loading-screen">
     <div class="house-loader">
       <div class="house-icon">🏠</div>
@@ -18,17 +17,12 @@
     </div>
   </div>
 
-  
   <div id="video-screen">
-    
     <video id="ma-video" src="yann.mp4" playsinline></video>
   </div>
 
-  
-
   <script>
     function seConnecter() {
-      
       const loginBox = document.getElementById('login-box');
       if (loginBox) loginBox.style.display = 'none';
 
@@ -47,7 +41,6 @@
       videoScreen.style.display = 'block';
       video.play();
 
-      
       videoScreen.addEventListener('click', allerPagePrincipale);
       
       video.addEventListener('ended', allerPagePrincipale);
@@ -57,10 +50,8 @@
       window.location.href = 'index.html';
     }
 
-    
     window.addEventListener('load', seConnecter);
   </script>
-
     
 </body>
 </html>
