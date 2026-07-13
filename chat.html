@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discussions | Aura Immo</title>
-    <!-- Remix Icon -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="exemple.css">
     <style>
@@ -164,7 +162,6 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <header class="header">
         <nav class="nav container">
             <a href="index.html" class="nav-logo">
@@ -184,7 +181,6 @@
     </header>
 
     <div class="chat-layout">
-        <!-- Sidebar -->
         <aside class="chat-sidebar">
             <div class="sidebar-header">
                 <h3>Messages</h3>
@@ -200,7 +196,6 @@
             </div>
         </aside>
 
-        <!-- Main Chat -->
         <main class="chat-main">
             <div class="chat-header">
                 <div style="display: flex; align-items: center; gap: 12px;">
@@ -247,7 +242,6 @@
             msgInput.value = '';
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-            // Simple auto-reply simulation
             setTimeout(() => {
                 const replyDiv = document.createElement('div');
                 replyDiv.className = 'message received';
@@ -262,7 +256,6 @@
             if(e.key === 'Enter') sendMessage();
         });
 
-        // Theme management (simple sync with index)
         const savedTheme = localStorage.getItem('aura-theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
         
@@ -278,7 +271,6 @@
             themeIcon.className = newTheme === 'dark' ? 'ri-sun-line' : 'ri-moon-line';
         });
 
-        // Get Property info from URL
         const urlParams = new URLSearchParams(window.location.search);
         const propTitle = urlParams.get('prop');
         if (propTitle) {
