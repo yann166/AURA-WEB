@@ -1,4 +1,3 @@
-// Hash password using Web Crypto API SHA-256
 async function hashPassword(password) {
   const encoder = new TextEncoder();
   const data = encoder.encode(password);
@@ -7,7 +6,6 @@ async function hashPassword(password) {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-// Validate password strength (min 8 chars, letters, digits, symbols)
 function isStrongPassword(password) {
   const minLength = 8;
   const hasLetter = /[A-Za-z]/.test(password);
@@ -17,17 +15,14 @@ function isStrongPassword(password) {
   return password.length >= minLength && hasLetter && hasDigit && hasSymbol;
 }
 
-// Get users from localStorage
 function getUsers() {
   return JSON.parse(localStorage.getItem('aura_users')) || [];
 }
 
-// Save users to localStorage
 function saveUsers(users) {
   localStorage.setItem('aura_users', JSON.stringify(users));
 }
 
-// Register a new user
 async function register(username, password) {
   if (!isStrongPassword(password)) {
     alert('Mot de passe invalide. Minimum 8 caractères avec lettres, chiffres et symboles.');
@@ -41,15 +36,14 @@ async function register(username, password) {
     return false;
   }
   const hashedPassword = await hashPassword(password);
-  const newUser = { username, password: hashedPassword, name: username }; // Added name for main.js compatibility
+  const newUser = { username, password: hashedPassword, name: username };
   users.push(newUser);
   saveUsers(users);
-  localStorage.setItem('aura_user', JSON.stringify(newUser)); // Log in immediately
+  localStorage.setItem('aura_user', JSON.stringify(newUser));
   alert('Registration successful!');
   return true;
 }
 
-// Login a user
 async function login(username, password) {
   const users = getUsers();
   const hashedPassword = await hashPassword(password);
@@ -64,7 +58,6 @@ async function login(username, password) {
   }
 }
 
-// Change password for a user
 async function changePassword(username, newPassword) {
   if (!isStrongPassword(newPassword)) {
     alert('Mot de passe invalide. Minimum 8 caractères avec lettres, chiffres et symboles.');
@@ -84,7 +77,6 @@ async function changePassword(username, newPassword) {
   return true;
 }
 
-// Show change password form (simple implementation)
 function showChangePasswordForm(username) {
   const newPassword = prompt('Enter new password:');
   if (newPassword) {
