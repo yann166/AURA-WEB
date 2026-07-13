@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="terminé.css">
 </head>
 <body>
-     <!-- ÉTAPE 2 : LOADING  -->
+     
   <div id="loading-screen">
     <div class="house-loader">
       <div class="house-icon">🏠</div>
@@ -18,20 +18,17 @@
     </div>
   </div>
 
-  <!-- ÉTAPE 3 : VIDÉO PLEIN ÉCRAN -->
+  
   <div id="video-screen">
-    <!-- 🔧 CHANGE UNIQUEMENT CE LIEN ICI -->
+    
     <video id="ma-video" src="yann.mp4" playsinline></video>
   </div>
 
-  <!-- ÉTAPE 4 : PAGE PRINCIPALE -->
-  <!-- <div id="page-principale">
-    <h1>🏠 Bienvenue sur le site !</h1>
-  </div> -->
+  
 
   <script>
     function seConnecter() {
-      // Ton système d'auth gère la vérification
+      
       const loginBox = document.getElementById('login-box');
       if (loginBox) loginBox.style.display = 'none';
 
@@ -50,7 +47,7 @@
       videoScreen.style.display = 'block';
       video.play();
 
-      // Rediriger au clic n'importe où sur l'écran de la vidéo
+      
       videoScreen.addEventListener('click', allerPagePrincipale);
       
       video.addEventListener('ended', allerPagePrincipale);
@@ -60,7 +57,7 @@
       window.location.href = 'index.html';
     }
 
-    // Lance le loading au chargement de la page
+    
     window.addEventListener('load', seConnecter);
   </script>
 
