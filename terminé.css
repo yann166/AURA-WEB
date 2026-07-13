@@ -1,60 +1,59 @@
 #loading-screen {
-      Display : none ;
-      Position : fixed ;
-      Inset : 0 ;
-      Background : #1a1a2e ;
-      Justify-content : center ;
-      Align-items : center ;
-      Flex-direction : column ;
-      z-index : 999 ;
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #1a1a2e;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
     }
 
     .house-loader {
-      Display : flex ;
-      Flex-direction : column ;
-      Align-items : center ;
-      Gap : 15px ;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
     }
 
     .house-icon {
-      Font-size : 60px ;
-      Animation : house-bounce 1.2s ease-in-out infinite ;
+      font-size: 60px;
+      animation: house-bounce 1.2s ease-in-out infinite;
     }
 
     .loading-text {
-      Color : #c9a96e ;
-      Font-size : 14px ;
-      Letter-spacing : 4px ;
-      Text-transform : uppercase ;
+      color: #c9a96e;
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
     }
 
     .progress-bar {
-      Width : 200px ;
-      Height : 4px ;
-      Background : rgba(255,255,255,0.1) ;
-      Border-radius : 2px ;
-      Overflow : hidden ;
+      width: 200px;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
     }
 
     .progress-fill {
-      Height : 100% ;
-      Background : linear-gradient(90deg, #c9a96e, #e8c97e) ;
-      Border-radius : 2px ;
-      Animation : progress 8s ease-in-out forwards ;
+      height: 100%;
+      background: linear-gradient(90deg, #c9a96e, #e8c97e);
+      border-radius: 2px;
+      animation: progress 8s ease-in-out forwards;
     }
 
     @keyframes house-bounce {
-      0%, 100% { transform : translateY(0) ; }
-      50%       { transform : translateY(-12px) ; }
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
     }
 
     @keyframes progress {
-      0%   { width : 0% ; }
-      50%  { width : 80% ; }
-      100% { width : 100% ; }
+      0%   { width: 0%; }
+      50%  { width: 80%; }
+      100% { width: 100%; }
     }
 
-    /* ── VIDÉO PLEIN ÉCRAN ── */
     #video-screen {
       display: none;
       position: fixed;
